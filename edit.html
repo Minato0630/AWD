@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Student</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<h2>Edit Profile</h2>
+
+<form id="editForm" action="/update-student" method="POST" class="add-form">
+    <input type="hidden" name="id" id="id">
+
+    <input name="firstName" id="firstName" required>
+    <input name="lastName" id="lastName" required>
+    <input name="age" id="age" type="number" required>
+    <input name="course" id="course" required>
+    <input name="email" id="email" type="email" required>
+    <input name="phone" id="phone" required>
+
+    <button type="submit">Save</button>
+</form>
+
+<script>
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+
+    fetch(`/api/student/${id}`)
+        .then(res => res.json())
+        .then(s => {
+            document.getElementById("id").value = s.id;
+            document.getElementById("firstName").value = s.firstName;
+            document.getElementById("lastName").value = s.lastName;
+            document.getElementById("age").value = s.age;
+            document.getElementById("course").value = s.course;
+            document.getElementById("email").value = s.email;
+            document.getElementById("phone").value = s.phone;
+        });
+</script>
+
+</body>
+</html>

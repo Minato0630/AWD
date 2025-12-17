@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Profile</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<h1>Student Profile</h1>
+
+<div id="profile"></div>
+
+<script>
+    // Get student id from URL
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+
+    fetch(`/api/student/${id}`)
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById("profile").innerHTML = `
+                <p><strong>Name :</strong> ${data.firstName} ${data.lastName}</p>
+                <p><strong>Age :</strong> ${data.age}</p>
+                <p><strong>Course :</strong> ${data.course}</p>
+                <p><strong>Email :</strong> <a href="mailto:${data.email}">${data.email}</a></p>
+                <p><strong>Phone No :</strong> ${data.phone}</p>
+
+                <a class="btn" href="/edit?id=${data.id}">Edit Profile</a>
+                <a class="btn" href="/">Add Another Student</a>
+            `;
+        });
+</script>
+
+</body>
+</html>

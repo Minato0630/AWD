@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Student Profile </title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<h2>Add a New Student</h2>
+
+<form action="/add-student" method="POST" class="add-form">
+    <input name="firstName" placeholder="First Name" required>
+    <input name="lastName" placeholder="Last Name" required>
+    <input name="age" placeholder="Age" type="number" required>
+    <input name="course" placeholder="Course" required>
+    <input name="email" placeholder="Email" type="email" required>
+    <input name="phone" placeholder="Phone" required>
+    <button type="submit">Add Student</button>
+</form>
+
+<h2>All Students</h2>
+<div id="student-list"></div>
+
+<script>
+async function loadStudents() {
+    const response = await fetch('/api/students');
+    const students = await response.json();
+    const list = document.getElementById('student-list');
+    list.innerHTML = '';
+    students.forEach(student => {
+        const div = document.createElement('div');
+        div.className = 'student-item';
+        div.innerHTML = `
+            <p><strong>${student.firstName} ${student.lastName}</strong></p>
+            <p>Age: ${student.age}, Course: ${student.course}</p>
+            <p>Email: ${student.email}, Phone: ${student.phone}</p>
+            <a href="/student?id=${student.id}">View Details</a>
+        `;
+        list.appendChild(div);
+    });
+}
+
+window.onload = loadStudents;
+</script>
+
+</body>
+</html>
