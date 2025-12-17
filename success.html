@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+    <style>/* Page background */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg,  #0b57dc, #044085);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Success box */
+.success-box {
+    background: #ffffff;
+    padding: 40px 50px;
+    border-radius: 20px;
+    text-align: center;
+    width: 380px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* Header */
+.success-box h1 {
+    color: #28a745;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+/* Message */
+.success-box p {
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+/* Button */
+.btn {
+    display: inline-block;
+    padding: 12px 20px;
+    background: #2575fc;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+/* Button hover */
+.btn:hover {
+    background: #044085;
+    transform: scale(1.05);
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.details {
+    background: #f6f6f6;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.details p {
+    font-size: 16px;
+    margin: 6px 0;
+}
+
+</style>
+</head>
+<body>
+
+<div class="success-box">
+    <h1>Registration Successful!</h1>
+    <p>Your account has been created successfully.</p>
+     <h3>User Details</h3>
+    <div class="details">
+        <p><strong>Name:</strong> {name}</p>
+        <p><strong>Email:</strong> {email}</p>
+        <p><strong>Class:</strong> { className}</p>
+        <p><strong>Roll Number:</strong>{ rollNo }</p>
+    </div>
+
+    <a href="index.html" class="btn">Go Back</a>
+</div>
+<script src="express.js"></script>
+
+</body>
+
+</html>
